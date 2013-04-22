@@ -20,24 +20,25 @@ package cl.niclabs.skandium.skeletons;
 import cl.niclabs.skandium.muscles.Execute;
 
 /**
- * A <code></code> {@link Skeleton}
+ * A <code></code> {@link cl.niclabs.skandium.skeletons.Skeleton}
  * @author mleyton
  *
- * @param <P> The input type of the {@link Skeleton}.
- * @param <R> The result type of the {@link Skeleton}. 
+ * @param <P> The input type of the {@link cl.niclabs.skandium.skeletons.Skeleton}.
+ * @param <R> The result type of the {@link cl.niclabs.skandium.skeletons.Skeleton}. 
  * */
 public class Pipe<P,R> extends AbstractSkeleton<P,R> {
 
-	Skeleton<P,R> stage1, stage2;
+	Skeleton<P,?> stage1;
+        Skeleton<?,R> stage2;
 	
-	public Pipe(Skeleton<P,R> stage1, Skeleton<P,R> stage2){
+	public <X> Pipe(Skeleton<P,X> stage1, Skeleton<X,R> stage2){
 		super();
 		this.stage1=stage1;
 		this.stage2=stage2;
 	}
 	
-	public Pipe(Execute<P,R> stage1,Execute<P,R> stage2){
-		this(new Seq<P,R>(stage1),new Seq<P,R>(stage2));
+	public <X> Pipe(Execute<P,X> stage1,Execute<X,R> stage2){
+		this(new Seq<P,X>(stage1),new Seq<X,R>(stage2));
 	}
 	
 	/**
@@ -46,4 +47,12 @@ public class Pipe<P,R> extends AbstractSkeleton<P,R> {
     public void accept(SkeletonVisitor visitor) {
         visitor.visit(this);
     }
+
+	public Skeleton<P, ?> getStage1() {
+		return stage1;
+	}
+
+	public Skeleton<?, R> getStage2() {
+		return stage2;
+	}
 }
