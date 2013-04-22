@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 import java.util.concurrent.ExecutionException;
+import java.lang.reflect.Array;
 
 import cl.niclabs.skandium.instructions.Instruction;
 
@@ -47,7 +48,7 @@ public class Task implements Runnable, Comparable<Task>{
 	long unfinishedChildren;		//The number of unfinished children tasks.
 	Throwable exception;			//The current exception.
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	SkandiumFuture future;			//The future object (if this is a root task) which will hold the computation's result.
 	TaskExecutor executor;			//The executor service used for computation.
 
@@ -75,7 +76,7 @@ public class Task implements Runnable, Comparable<Task>{
 	 * @param priority The priority of this <code>Task</code>.
 	 * @param executor The executor service used to compute this <code>Task</code>.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes" })
 	Task(Task root, Task parent, Object P, Stack<Instruction> stack, int priority, TaskExecutor executor){
 		this.id       = random.nextLong();
 		this.root     = root;
@@ -280,7 +281,8 @@ public class Task implements Runnable, Comparable<Task>{
 	 * 
 	 * If the <code>Task</code> is root, then the future is updated with the result.
 	 */
-	void notifyParent() {
+	@SuppressWarnings("unchecked")
+	protected <P> void notifyParent() {
 
 		if(this.isRoot()){
 			updateFutureWithResult();
@@ -292,10 +294,10 @@ public class Task implements Runnable, Comparable<Task>{
 			
 			if(parent.children.size() > 0 && parent.childrenAreFinished()){
 				
-				Object[] results = new Object[parent.children.size()];
+				P[] results = (P []) Array.newInstance(this.getP().getClass(), parent.children.size());
 				
 				for(int i=0;i<results.length;i++){
-					results[i] = parent.children.get(i).getP();
+					results[i] = (P) parent.children.get(i).getP();
 				}
 				
 				parent.P=results;
