@@ -33,6 +33,7 @@ import cl.niclabs.skandium.system.events.EventIdGenerator;
 abstract class AbstractInstruction implements Instruction {
 
 	int parent;
+	int id;
 
 	@SuppressWarnings("rawtypes")
 	final Skeleton[] strace;
@@ -55,16 +56,14 @@ abstract class AbstractInstruction implements Instruction {
 		for(int i=0; i < stack.size(); i++){
 			Instruction inst = stack.get(i).copy();
 			/* Set new event ids */
-			if (inst instanceof EventInst) {
-				int id = ((EventInst)inst).getIndex();
-				int newId;
-				if(newIds.containsKey(id)) newId = newIds.get(id);
-				else {
-					newId = EventIdGenerator.getSingleton().increment();
-					newIds.put(id, newId);
-				}
-				((EventInst)inst).setIndex(newId);
+			int id = inst.getId();
+			int newId;
+			if(newIds.containsKey(id)) newId = newIds.get(id);
+			else {
+				newId = EventIdGenerator.getSingleton().increment();
+				newIds.put(id, newId);
 			}
+			inst.setId(newId);
 			newStack.push(inst);
 		}
 		/* update parents */
@@ -103,6 +102,16 @@ abstract class AbstractInstruction implements Instruction {
 	@Override
 	public void setParent(int parent) {
 		this.parent = parent;
+	}
+	
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

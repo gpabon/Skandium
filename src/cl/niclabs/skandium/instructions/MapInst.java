@@ -39,7 +39,6 @@ public class MapInst extends  AbstractInstruction {
 	Stack<Instruction> substack;
 	@SuppressWarnings("rawtypes")
 	Merge merge;
-	int id;
 
 	/**
 	 * The main constructor.

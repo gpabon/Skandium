@@ -292,6 +292,7 @@ class Controller extends GenericListener {
 	synchronized public Object handler(Object param, 
 			@SuppressWarnings("rawtypes") Skeleton[] strace, int index,
 			boolean cond, int parent, When when, Where where) {
+		
 		/*
 		 * The stack of skeletons (skeleton's trace) internally is represented
 		 * by a Stack<Skeleton>, not Skeleton[], the following two lines make

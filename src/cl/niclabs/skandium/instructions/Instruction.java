@@ -65,4 +65,7 @@ public interface Instruction {
 	
 	public void setParent(int parent);
 	public int getParent();
+
+	public void setId(int id);
+	public int getId();
 }

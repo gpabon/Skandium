@@ -38,7 +38,6 @@ public class SplitInst extends AbstractInstruction {
 	List<Stack<Instruction>> substacks;
 	@SuppressWarnings("rawtypes")
 	Merge merge;
-	int id;
 
 	/**
 	 * The main constructor.

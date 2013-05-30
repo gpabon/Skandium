@@ -35,7 +35,6 @@ public class IfInst extends AbstractInstruction {
 	@SuppressWarnings("rawtypes")
 	Condition condition;
 	Stack<Instruction> trueCaseStack, falseCaseStack;
-	int id;
 	
 	/**
 	 * The main condition.

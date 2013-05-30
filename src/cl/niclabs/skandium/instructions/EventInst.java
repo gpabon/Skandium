@@ -40,7 +40,6 @@ public class EventInst extends AbstractInstruction {
 	
 	When when;
 	Where where;
-	int index;
 	boolean cond;
 
 	/**
@@ -54,7 +53,7 @@ public class EventInst extends AbstractInstruction {
 		super(strace);
 		this.when = when;
 		this.where = where;
-		this.index = index;
+		this.id = index;
 		this.cond = cond;
 		this.parent = parent;
 	}
@@ -70,24 +69,24 @@ public class EventInst extends AbstractInstruction {
 		SkandiumEventListener[] listeners = ((AbstractSkeleton<?,?>) curr).getListeners(when, where);
 		for (SkandiumEventListener l : listeners) {
 			if (l instanceof IndexListener<?>) {
-				if (((IndexListener<P>) l).guard(param, strace, index)) {
-					param = ((IndexListener<P>) l).handler(param, strace, index);
+				if (((IndexListener<P>) l).guard(param, strace, id)) {
+					param = ((IndexListener<P>) l).handler(param, strace, id);
 				}
 			} else if (l instanceof ConditionListener<?>) {
-				if (((ConditionListener<P>) l).guard(param, strace, index, cond)) {
-					param = ((ConditionListener<P>) l).handler(param, strace, index, cond);
+				if (((ConditionListener<P>) l).guard(param, strace, id, cond)) {
+					param = ((ConditionListener<P>) l).handler(param, strace, id, cond);
 				}
 			} else if (l instanceof ParentListener<?>) {
-				if (((ParentListener<P>) l).guard(param, strace, index, parent)) {
-					param = ((ParentListener<P>) l).handler(param, strace, index, parent);
+				if (((ParentListener<P>) l).guard(param, strace, id, parent)) {
+					param = ((ParentListener<P>) l).handler(param, strace, id, parent);
 				}
 			} else if (l instanceof ParentConditionListener<?>) {
-				if (((ParentConditionListener<P>) l).guard(param, strace, index, cond, parent)) {
-					param = ((ParentConditionListener<P>) l).handler(param, strace, index, cond, parent);
+				if (((ParentConditionListener<P>) l).guard(param, strace, id, cond, parent)) {
+					param = ((ParentConditionListener<P>) l).handler(param, strace, id, cond, parent);
 				}
 			} else if (l instanceof GenericListener) {
-				if (((GenericListener) l).guard(param, strace, index, cond, parent, when, where)) {
-					param = (P) ((GenericListener) l).handler(param, strace, index, cond, parent, when, where);
+				if (((GenericListener) l).guard(param, strace, id, cond, parent, when, where)) {
+					param = (P) ((GenericListener) l).handler(param, strace, id, cond, parent, when, where);
 				}
 			} else throw new RuntimeException("Should not be here!");
 		}
@@ -99,15 +98,7 @@ public class EventInst extends AbstractInstruction {
 	 */
 	@Override
 	public Instruction copy() {
-		return new EventInst(when, where, copySkeletonTrace(), index, cond, parent);
-	}
-
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
+		return new EventInst(when, where, copySkeletonTrace(), id, cond, parent);
 	}
 
 }

@@ -35,7 +35,6 @@ public class WhileInst extends AbstractInstruction {
 	@SuppressWarnings("rawtypes")
 	Condition condition;
 	Stack<Instruction> substack;
-	int id;
 
 	/**
 	 * The main constructor
