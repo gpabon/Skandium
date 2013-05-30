@@ -404,4 +404,34 @@ class Activity {
 			return;
 		}
 	}
+
+	/**
+	 * Prints information about this activity and its subsecuents
+	 * @param ctrl Reference of the controlling object that knows which is the
+	 * last activity.
+	 */
+	void printForward(Controller ctrl) {
+		System.out.println("Activities");
+		printForwardRec(ctrl, new HashSet<Activity>());
+	}
+	
+	private void printForwardRec(Controller ctrl, HashSet<Activity> visited) {
+		if (visited.contains(this)) return;
+		long ini = ctrl.getInitialActivity().getTi();
+		System.out.print(this.hashCode() + "\t"+ 
+				(ti>0?((long)(ti-ini)/1000000):ti) + "\t" +
+				m.getClass().getName() + "\t" + 
+				(tf>0?((long)(tf-ini)/1000000):tf) + "\t");
+		visited.add(this);
+		if (ctrl.isLastActivity(this)) {
+			System.out.print("\n");
+			return;
+		}
+		for (Activity n: s)
+			System.out.print(n.hashCode() + "\t");
+		System.out.print("\n");
+		for (Activity n: s)
+			n.printForwardRec(ctrl, visited);
+	}
+
 }

@@ -423,20 +423,20 @@ class Controller extends GenericListener {
 		return true;
 	}
 	
-	/**
+	/*
 	 * Prints in standard output the "t" structure
 	 */
-	void printT() {
+	private void printT() {
 		System.out.println("Estimated execution times (ms)");
 		for (Muscle<?,?> m:t.keySet()) {
 			System.out.println(m.getClass().getName() + "\t" + ((long)t.get(m).longValue()/1000000));
 		}
 	}
 
-	/**
+	/*
 	 * Prints in standard output the "card" structure
 	 */
-	void printCard() {
+	private void printCard() {
 		System.out.println("Estimated cardinality");
 		for (Muscle<?,?> m:card.keySet()) {
 			System.out.println(m.getClass().getName() + "\t" + card.get(m).intValue());
@@ -510,6 +510,11 @@ class Controller extends GenericListener {
 			}
 			printT();
 			printCard();
+			initialAct.printForward(this);
 		}
+	}
+	
+	Activity getInitialActivity() {
+		return initialAct;
 	}
 }
