@@ -303,6 +303,11 @@ public class Task implements Runnable, Comparable<Task>{
 				parent.P=results;
 				parent.children.clear();
 				
+				/*
+				 * Deep first scheduler to improve autonomic behavior 
+				 */
+				parent.priority = this.priority-1;
+				
 				executor.execute(parent);
 			}
 		}
