@@ -21,7 +21,7 @@ package cl.niclabs.skandium.autonomic;
 /**
  * Enumeration of Types of States
  * 
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 enum StateType {

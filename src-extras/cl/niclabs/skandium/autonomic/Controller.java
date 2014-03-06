@@ -44,7 +44,7 @@ import cl.niclabs.skandium.skeletons.While;
  * structures, controlling events raised by Skandium, and controlling the
  * threads increasing or decreasing.
  * 
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 class Controller extends GenericListener {

@@ -43,7 +43,7 @@ import cl.niclabs.skandium.skeletons.While;
  * Therefore, this visitor should be called once the estimating variables 
  * (muscles execution time, and condition and split cardinality) are defined.
  * 
- * @author Gustavo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 class AEstimator implements SkeletonVisitor {

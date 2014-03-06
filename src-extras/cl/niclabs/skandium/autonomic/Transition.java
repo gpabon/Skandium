@@ -18,8 +18,6 @@
 
 package cl.niclabs.skandium.autonomic;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /**
  * This class represents a transition for the state machines. A transition is 
  * comparable in order to allow the use of a priority queue during the 
@@ -29,7 +27,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * three possible execute methods depending of the type and number of 
  * parameters.
  * 
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 abstract class Transition implements Comparable<Transition> {
@@ -50,15 +48,15 @@ abstract class Transition implements Comparable<Transition> {
 	}
 
 	protected void execute() {
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException();
 	}
 
 	protected void execute(int i) {
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException();
 	}
 	
 	protected void execute(int i, int p) {
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException();
 	}
 
 	State getDest() {

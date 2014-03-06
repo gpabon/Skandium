@@ -29,7 +29,7 @@ import cl.niclabs.skandium.muscles.Muscle;
  * Objects of the Activity class represents activities of the dependency 
  * activity graph generated during the skeleton execution.
  * 
- * @author Gustavo Pabon <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 class Activity {

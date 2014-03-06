@@ -25,7 +25,7 @@ import java.util.TreeMap;
  * Structure that holds information about intervals of time and concurrency
  * on each interval for two cases: best effort and fifo.
  * 
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 class TimeLine {

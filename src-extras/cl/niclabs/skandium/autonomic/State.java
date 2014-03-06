@@ -29,7 +29,7 @@ import java.util.List;
  *    example a "map/dac after split" state. 
  * c) type of state defined on Enumeration StateType
  * 
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 class State {

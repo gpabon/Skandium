@@ -57,7 +57,7 @@ import cl.niclabs.skandium.skeletons.AbstractSkeleton;
  * This version of the Autonomic Threads extension does not provide support for
  * If and Fork skeletons.
  * 
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  */
 public class AutonomicThreads {
 	

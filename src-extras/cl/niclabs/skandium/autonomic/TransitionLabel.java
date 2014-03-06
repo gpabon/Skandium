@@ -29,7 +29,7 @@ import cl.niclabs.skandium.skeletons.Skeleton;
  * (Uniquely) identification of a transition in order to be compared to an 
  * event.
  * 
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 class TransitionLabel implements Comparable<TransitionLabel> {

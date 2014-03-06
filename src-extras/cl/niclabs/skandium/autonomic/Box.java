@@ -23,9 +23,9 @@ package cl.niclabs.skandium.autonomic;
  * a class in order to allow mutation on final variables or pass by reference
  * of primitives. 
  * 
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
- * @param <T> Type of variable to be enclosed by the Box
+ * @param &lt;T&gt; Type of variable to be enclosed by the Box
  */
 class Box<T> {
 	private T var;

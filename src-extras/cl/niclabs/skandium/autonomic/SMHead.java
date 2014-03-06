@@ -39,7 +39,7 @@ import cl.niclabs.skandium.skeletons.Skeleton;
  *    g. Sub SMHeads, for modeling nested relations and holds statuses of 
  *       internal nested skeleton's instances.
  *         
- * @author Gustavo Adolfo Pabón <gustavo.pabon@gmail.com>
+ * @author Gustavo Pabon &lt;gustavo.pabon&#64;gmail.com&gt;
  *
  */
 class SMHead {
